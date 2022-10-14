@@ -25,8 +25,5 @@ export default {
 }
 </script>
 <style>
-.home{
-  background-color: #FAB529;
-}
 
 </style>
