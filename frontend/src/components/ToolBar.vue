@@ -34,7 +34,7 @@ export default {
       {
         title: 'История заявки',
         link: ''
-      },
+      }
     ]
   })
 }
