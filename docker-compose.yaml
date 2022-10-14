@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  bd:
+    container_name: bd
+    ports:
+      - "5436:5432"
+    environment:
+      - POSTGRES_DB=bd
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=admin
+    image: postgres
+    volumes:
+      - ./postgres-initdb.sh:/docker-entrypoint-initdb.d/init.sh
