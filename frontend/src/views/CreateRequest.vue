@@ -7,7 +7,7 @@
 <script>
 import ToolBar from '@/components/ToolBar.vue'
 export default {
-  name: 'HomeView',
+  name: 'CreateRequest',
   components: {
     ToolBar
   }
