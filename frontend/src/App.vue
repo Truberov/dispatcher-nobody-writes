@@ -1,6 +1,20 @@
 <template>
-  <router-view/>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  </div>
 </template>
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld
+  }
+}
+</script>
 
 <style>
 #app {
@@ -9,12 +23,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-@font-face {
-  font-family: 'Geometria';
-  src: url('~@/assets/fonts/Roboto-Regular.ttf');
-  src: local('Roboto'), local('Roboto');
-  font-weight: 100;
-  font-style: normal;
+  margin-top: 60px;
 }
 </style>
