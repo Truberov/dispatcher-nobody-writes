@@ -1,6 +1,6 @@
 <template>
   <v-row class="mt-10 justify-center">
-    <h1>Выберете транспорт</h1>
+    <h2>Выберете транспорт</h2>
   </v-row>
   <v-row class="mt-10 mb-10 justify-space-around">
     <v-col class="item" cols="3" v-for="item in transport" :key="item" @click="select(item)">
@@ -43,30 +43,41 @@ export default {
     isSelected: false
   }),
   methods: {
-    select(item){
+    select(item) {
       this.selected = item
     },
-    next(){
+    next() {
       this.$emit('choosed-transport')
     }
   }
 }
 </script>
 
-<style scoped>
-.item{
+<style scoped lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: all .4s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
+{
+  position: absolute;
+  opacity: 0;
+}
+
+.item {
   cursor: pointer;
   transform: scale(1);
   transition: all 0.3s;
 }
-.item:hover{
+
+.item:hover {
   background: rgba(217, 217, 217, 0.5);
   border-radius: 10px;
   transition: all 0.3s;
   transform: scale(1.1);
 }
 
-.selected{
+.selected {
   border-radius: 10px;
   transform: scale(1.05);
   background: rgba(217, 217, 217, 0.5);
