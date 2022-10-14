@@ -18,5 +18,5 @@ class TransportListView(generics.ListAPIView):
     serializer_class = TransportSerializer
     permission_classes = (IsAuthenticated, )
     pagination_class = StandardPagination
-    filterset_fields = ('is_active', 'type', )
+    filterset_fields = ('is_active', 'type', 'status', )
     search_fields = ('name', 'plate_number', 'characteristic', )
