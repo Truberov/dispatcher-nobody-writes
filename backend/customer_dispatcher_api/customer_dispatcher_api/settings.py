@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'customer_dispatcher_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "bd",
+        "USER": "admin",
+        "PASSWORD": "root",
+        "HOST": "10.0.24.252",
+        "PORT": "5436",
     }
 }
 
