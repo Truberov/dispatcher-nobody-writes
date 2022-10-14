@@ -24,21 +24,9 @@ export default {
   })
 }
 </script>
-<style lang="scss">
-.home {
-  height: 100vh;
-}
-
-
-.fade2-enter-active, .fade2-leave-active {
-  transition: all .6s;
-}
-
-.fade2-enter, .fade2-leave-to /* .fade-leave-active до версии 2.1.8 */
-{
-  position: absolute;
-  opacity: 0;
-  transform: translateY(200px);
+<style>
+.home{
+  background-color: #FAB529;
 }
 
 </style>
