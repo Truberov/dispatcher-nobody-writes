@@ -8,7 +8,7 @@
 
 <script>
 import ToolBar from '@/components/ToolBar.vue'
-import TransportTable from '@/components/ViewRequest/TransportTable'
+import TransportTable from '@/components/ViewTransport/TransportTable'
 
 export default {
   name: "ViewTransport",
