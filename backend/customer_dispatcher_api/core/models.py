@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+class TypeChoices(models.TextChoices):
+    CRANE = 'Парк кранов'
+    LIFT_TRUCK = 'Парк погрузчиков'
+    AUTOTOWER = 'Парк автовышек'
+
+
 class Customer(models.Model):
     phone = models.CharField(
         max_length=15,
@@ -42,11 +48,6 @@ class Transport(models.Model):
         FREE = 'FREE', 'Cвободен'
         IN_WORK = 'IN_WORK', 'В работе'
         ON_THE_WAY = 'ON_THE_WAY', 'В пути'
-
-    class TypeChoices(models.TextChoices):
-        CRANE = 'Парк кранов'
-        LIFT_TRUCK = 'Парк погрузчиков'
-        AUTOTOWER = 'Парк автовышек'
 
     type = models.CharField(
         max_length=255,
@@ -96,10 +97,28 @@ class Transport(models.Model):
 
 
 class Reservation(models.Model):
+    class StatusChoices(models.TextChoices):  # TODO: прописать статусы заявок
+        FREE = 'FREE', 'Cвободен'
+        IN_WORK = 'IN_WORK', 'В работе'
+        ON_THE_WAY = 'ON_THE_WAY', 'В пути'
+
     transport = models.ForeignKey(
         Transport,
         on_delete=models.SET_NULL,
         verbose_name='Забронированный транспорт',
+        null=True,
+        blank=True
+    )
+    type = models.CharField(
+        max_length=255,
+        verbose_name='Тип ТС',
+        choices=TypeChoices.choices,
+        null=True,
+        blank=True
+    )
+    characteristic = models.CharField(
+        max_length=255,
+        verbose_name='Характеристика ТС',
         null=True,
         blank=True
     )
@@ -127,4 +146,4 @@ class Reservation(models.Model):
     )
 
     def __str__(self):
-        return f'{self.transport} / {self.end_date}-{self.end_date}'
+        return f'{self.characteristic} / {self.end_date}-{self.end_date}'
