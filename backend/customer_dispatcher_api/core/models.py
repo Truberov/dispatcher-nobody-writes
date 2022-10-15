@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
+import datetime
 
 
 class TypeChoices(models.TextChoices):
@@ -98,9 +98,9 @@ class Transport(models.Model):
 
 class Reservation(models.Model):
     class StatusChoices(models.TextChoices):  # TODO: прописать статусы заявок
-        FREE = 'FREE', 'Cвободен'
-        IN_WORK = 'IN_WORK', 'В работе'
-        ON_THE_WAY = 'ON_THE_WAY', 'В пути'
+        IN_SEARCH = 'In the search process', 'В процессе поиска'
+        VEHICLE_FOUND = 'Vehicle found', 'Транспортное средство найдено'
+        CLOSED = 'Closed', 'Закрыто'
 
     transport = models.ForeignKey(
         Transport,
@@ -123,7 +123,7 @@ class Reservation(models.Model):
         blank=True
     )
     customer = models.ForeignKey(
-        Customer,
+        User,
         on_delete=models.SET_NULL,
         verbose_name='Заказчик',
         null=True,
@@ -131,7 +131,7 @@ class Reservation(models.Model):
     )
     begin_date = models.DateField(
         verbose_name='Дата начала брони',
-        default=timezone.now
+        default=datetime.date.today
     )
     end_date = models.DateField(
         verbose_name='Дата окончания брони',
@@ -140,9 +140,9 @@ class Reservation(models.Model):
     )
     status = models.CharField(
         max_length=255,
-        verbose_name='Статус ТС',
-        null=True,
-        blank=True
+        verbose_name='Статус Брони',
+        choices=StatusChoices.choices,
+        default=StatusChoices.IN_SEARCH
     )
 
     def __str__(self):

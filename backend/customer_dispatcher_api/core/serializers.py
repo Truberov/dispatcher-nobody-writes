@@ -50,7 +50,9 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class ReservationPostSerializer(serializers.ModelSerializer):
+    status = serializers.CharField(read_only=True)
 
     class Meta:
         model = Reservation
-        fields = ('characteristic', 'type', 'begin_date', 'end_date', 'transport', )
+        fields = ('characteristic', 'type', 'end_date', 'transport', 'status', )
+
