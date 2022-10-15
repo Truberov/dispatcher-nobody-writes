@@ -1,8 +1,8 @@
 <template>
   <div>
     <ToolBar/>
-    <h1 class="mt-10">Создать заявку</h1>
-    <ChooseTransport class="mt-10" v-if="!isChooseTransport" @choosed-transport="isChooseTransport = true"/>
+    <h1 style="margin-top: 3%">Создать заявку</h1>
+    <ChooseTransport v-if="!isChooseTransport" @choosed-transport="isChooseTransport = true"/>
   </div>
 </template>
 
