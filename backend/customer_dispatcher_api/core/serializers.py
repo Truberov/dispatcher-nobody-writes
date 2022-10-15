@@ -20,6 +20,20 @@ class TransportSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class TypesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Transport
+        fields = ('type', )
+
+
+class CharacteristicSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Transport
+        fields = ('type', 'characteristic', )
+
+
 class ReservationFeatureSerializer(serializers.ModelSerializer):
 
     class Meta:
