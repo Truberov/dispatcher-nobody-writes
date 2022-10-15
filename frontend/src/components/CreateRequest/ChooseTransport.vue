@@ -6,14 +6,16 @@
       </v-col>
     </v-row>
     <v-row style="margin-top: 3%; margin-left: 2%; margin-right: 2%;   justify-content: center">
-      <v-row style="align-items: flex-end; justify-content: space-around">
-        <v-col class="item" cols="2" v-for="item in transport" :key="item" @click="select(item)">
-          <div :class="{'selected' : selected && selected.type === item.type}">
-            <v-img max-height="350" :src="item.img"></v-img>
-            <h3>{{ item.name }}</h3>
-          </div>
-        </v-col>
-      </v-row>
+      <v-col>
+        <v-row style="align-items: flex-end; justify-content: space-around">
+          <v-col class="item" cols="2" v-for="item in transport" :key="item" @click="select(item)">
+            <div :class="{'selected' : selected && selected.type === item.type}">
+              <v-img max-height="350" :src="item.img"></v-img>
+              <h3>{{ item.name }}</h3>
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
       <v-row style="margin-top: 3%">
         <v-col>
           <v-btn :disabled="!selected" @click="next">
