@@ -32,8 +32,8 @@ export default {
         link: '/'
       },
       {
-        title: 'Посмотреть доступную технику',
-        link: ''
+        title: 'Просмотр транспорта',
+        link: '/view_transport'
       },
       {
         title: 'История заявок',

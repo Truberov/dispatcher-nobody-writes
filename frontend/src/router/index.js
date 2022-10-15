@@ -9,12 +9,13 @@ const routes = [
     name: 'create_request',
 
     component: () => import('@/pages/CreateRequest')
+  },
+  {
+    path: '/view_transport',
+    name: 'view_transport',
+
+    component: () => import('@/pages/ViewTransport')
   }
-  // {
-  //   path: '/view_transport',
-  //   name: 'view_transport'
-  //
-  // },
   // {
   //   path: '/view_request',
   //   name: 'view_request'
