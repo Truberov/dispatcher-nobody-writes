@@ -2,7 +2,7 @@
   <div>
     <ToolBar/>
     <h1 style="margin-top: 3%">Просмотр транспорта</h1>
-    <TransportTable/>
+    <TransportTable style="margin-top: 3%"/>
   </div>
 </template>
 
