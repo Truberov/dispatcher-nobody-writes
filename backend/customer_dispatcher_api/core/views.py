@@ -8,6 +8,7 @@ from core.serializers import (
     TransportSerializer, ReservationSerializer, CharacteristicSerializer, ReservationPostSerializer, TypesSerializer,
 )
 from core.pagination import StandardPagination
+from core.permissions import IsOwnerOrReadOnly
 
 
 class TransportListView(generics.ListAPIView):
@@ -65,8 +66,20 @@ class ReservationListCreatView(generics.ListCreateAPIView):
     serializer_class = ReservationPostSerializer
     permission_classes = (IsAuthenticated, )
     pagination_class = StandardPagination
-    filterset_fields = ()
+    filterset_fields = ('customer', 'status', 'transport', 'begin_date', 'end_date', )
     search_fields = ()
 
     def perform_create(self, serializer):
         serializer.save()
+
+
+class ReservationRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    """
+    GET: Получить кокретную заявку
+    POST: Отредактировать заявку на бронь
+    """
+    queryset = Reservation.objects.all()
+    permission_classes = (IsAuthenticated, IsOwnerOrReadOnly, )
+    serializer_class = ReservationPostSerializer
+
+

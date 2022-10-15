@@ -53,4 +53,4 @@ class ReservationPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Reservation
-        fields = ('characteristic', 'type', 'begin_date', 'end_date', )
+        fields = ('characteristic', 'type', 'begin_date', 'end_date', 'transport', )
