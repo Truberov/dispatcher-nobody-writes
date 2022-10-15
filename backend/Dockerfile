@@ -1,10 +1,9 @@
 FROM python:latest
-
+ENV PYTHONUNBUFFERED 1
+ENV TZ 'Europe/Moscow'
 WORKDIR /code
-COPY requirements.txt /code/
-COPY ./customer_dispatcher_api/ .
-RUN apt update && apt install -y libpq-dev gcc python3-dev musl-dev netcat
 RUN pip install --upgrade pip
+COPY requirements.txt /code/
 RUN pip install -r requirements.txt
-
+COPY ./customer_dispatcher_api/ .
 EXPOSE 8000

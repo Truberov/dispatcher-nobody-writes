@@ -10,20 +10,22 @@ services:
       POSTGRES_DB: "dispatcher_customer_db"
       PGDATA: "/data/postgres"
     ports:
-      - "5435:5435"
+      - "5436:5436"
     volumes:
       - ./postgres_data:/data/postgres
-    command: -p 5435
+    command: -p 5436
     restart: on-failure
 
-  dispatcher_customer_api:
+  customer_dispatcher_api:
     build: ./backend
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
     - "8000:8000"
     volumes:
       - .:/backend
-      # - ./backend/dispatcher_customer_api/:/code/
+      - ./backend/customer_dispatcher_api/:/code/
+    env_file:
+      - .env.prod
     restart: always
     depends_on:
       - dispatcher_customer_db
