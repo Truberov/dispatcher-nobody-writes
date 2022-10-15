@@ -16,7 +16,7 @@
       </v-row>
       <v-row style="margin-top: 3%">
         <v-col>
-          <v-btn :disabled="!selected">
+          <v-btn :disabled="!selected" @click="next">
             Далее
           </v-btn>
         </v-col>
@@ -53,6 +53,9 @@ export default {
   methods: {
     select(item) {
       this.selected = item
+    },
+    next() {
+      this.$emit('choosed-transport')
     }
   }
 }
